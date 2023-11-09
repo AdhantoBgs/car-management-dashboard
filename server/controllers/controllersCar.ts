@@ -18,7 +18,7 @@ const getCarsById = async (req: Request, res: Response) => {
 
 const postCars = async (req: Request, res: Response) => {
     const reqBody = req.body;
-    // const id = reqBody.id;
+    const id = reqBody.id;
     const name = reqBody?.name;
     const type = reqBody?.type;
     const year = reqBody?.year;
@@ -30,7 +30,7 @@ const postCars = async (req: Request, res: Response) => {
         const url = `/uploads/${req.file.filename}`;
         image_url = url;
 
-        const postNewCar = await CarsModel.query().insert({name, type, year, size, price, image_url}).returning("*");
+        const postNewCar = await CarsModel.query().insert({id, name, type, year, size, price, image_url}).returning("*");
 
         res.status(201).json(postNewCar);
     }

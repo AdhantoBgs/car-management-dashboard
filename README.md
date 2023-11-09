@@ -2,7 +2,7 @@
 
 ## ERD
 
-![ERD] (https://dbdiagram.io/d/Challenge5-654bc7c07d8bbd6465c7ea0a)
+https://dbdiagram.io/d/Challenge5-654bc7c07d8bbd6465c7ea0a
 
 # GET
 

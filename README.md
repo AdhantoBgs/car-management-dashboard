@@ -17,22 +17,22 @@ http://localhost:3000/
 "status": 200,
 "data": [
     {
-        "id": 1,
-        "name": "Fortuner",
+        "id": "3564387767947264",
+        "name": "Rush",
         "type": "SUV",
-        "year": 2020,
-        "size": "large",
-        "price": 900000,
-        "image_url": "/uploads/image_url-1699551654531-679362307.png"
+        "year": 2019,
+        "size": "medium",
+        "price": 500000,
+        "image_url": "/uploads/image_url-1699632598704-154844057.png"
     },
     {
-        "id": 2,
-        "name": "Pajero",
+        "id": "3564387767947264",
+        "name": "Velloz",
         "type": "MPV",
-        "year": 2022,
+        "year": 2019,
         "size": "large",
-        "price": 1000000,
-        "image_url": "/uploads/image_url-1699551788115-354251743.png"
+        "price": 750000,
+        "image_url": "/uploads/image_url-1699633015598-75406729.png"
     }
 ]
 ```
@@ -48,13 +48,13 @@ http://localhost:3000/:id
 "status": 200,
 "data": [
     {
-        "id": 1,
-        "name": "Fortuner",
+        "id": "3564387767947264",
+        "name": "Rush",
         "type": "SUV",
-        "year": 2020,
-        "size": "large",
-        "price": 900000,
-        "image_url": "/uploads/image_url-1699551654531-679362307.png"
+        "year": 2019,
+        "size": "medium",
+        "price": 500000,
+        "image_url": "/uploads/image_url-1699632598704-154844057.png"
     }
 ]
 ```
@@ -70,11 +70,11 @@ http://localhost:3000/create
 
 ```json
 {
-  "name": "Fortuner",
+  "name": "Hyundai",
   "type": "SUV",
-  "year": 2020,
-  "size": "large",
-  "price": 900000,
+  "year": 2023,
+  "size": "small",
+  "price": 4250000,
   "image_url": "car_image.png"
 }
 ```
@@ -85,13 +85,13 @@ http://localhost:3000/create
 "status": 201,
 "data": [
     {
-        "id": 1,
-        "name": "Fortuner",
+        "id": "3564387767947264",
+        "name": "Hyundai",
         "type": "SUV",
-        "year": 2020,
-        "size": "large",
-        "price": 900000,
-        "image_url": "/uploads/image_url-1699551654531-679362307.png"
+        "year": 2023,
+        "size": "small",
+        "price": 425000,
+        "image_url": "/uploads/image_url-1699633068523-965657580.png"
     }
 ]
 ```
@@ -107,11 +107,11 @@ http://localhost:3000/update/:id
 
 ```json
 {
-  "name": "Fortuner",
-  "type": "SUV",
-  "year": 2020,
+  "name": "Pajero",
+  "type": "MPV",
+  "year": 2022,
   "size": "large",
-  "price": 900000,
+  "price": 1000000,
   "image_url": "car_image.png"
 }
 ```
@@ -122,13 +122,13 @@ http://localhost:3000/update/:id
 "status": 201,
 "data": [
     {
-        "id": 1,
-        "name": "Fortuner",
-        "type": "SUV",
-        "year": 2020,
+        "id": "3564386847297536",
+        "name": "Pajero",
+        "type": "MPV",
+        "year": 2022,
         "size": "large",
-        "price": 900000,
-        "image_url": "/uploads/image_url-1699551654531-679362307.png"
+        "price": 1000000,
+        "image_url": "/uploads/image_url-1699633212233-759197651.png"
     }
 ]
 ```
@@ -150,7 +150,7 @@ http://localhost:3000/delete/:id
 ## URL
 
 1. http://localhost:3000/
-2. http://localhost:3000/2
+2. http://localhost:3000/3564386847297536
 3. http://localhost:3000/create
-4. http://localhost:3000/update/:id
-5. http://localhost:3000/delete/2
+4. http://localhost:3000/update/3564386847297536
+5. http://localhost:3000/delete/3564386847297536

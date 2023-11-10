@@ -1,7 +1,7 @@
 const express = require("express");
 const handleLogger = require("./server/middleware/handleLogger");
 const carRouter = require("./server/routes/routesCar");
-const database = require("./server/middleware/dbKnex")
+const database = require("./server/middleware/database");
 
 const app = express();
 const PORT: number = 3000;

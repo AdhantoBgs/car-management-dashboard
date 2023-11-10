@@ -1,7 +1,7 @@
 import {Response, Request} from "express";
 import {CarsModel, Cars} from "./../../models/Cars";
 
-// const {v4: uuidv4} = require("uuid");
+const uuid = require("./../middleware/uuid");
 
 const getCars = async (req: Request, res: Response) => {
     const getCarAll = await CarsModel.query() || [];
@@ -18,7 +18,7 @@ const getCarsById = async (req: Request, res: Response) => {
 
 const postCars = async (req: Request, res: Response) => {
     const reqBody = req.body;
-    const id = reqBody.id;
+    const id = uuid;
     const name = reqBody?.name;
     const type = reqBody?.type;
     const year = reqBody?.year;

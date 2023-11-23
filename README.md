@@ -1,10 +1,10 @@
 # Challenge 06
 
-# Car Management API
+## Car Management API
 
-# API Docs
+## API Docs
 
-# Users Endpoint
+## Users Endpoint
 
 #### Super Admin Credentials:
 

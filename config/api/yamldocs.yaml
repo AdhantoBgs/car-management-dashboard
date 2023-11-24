@@ -1,0 +1,327 @@
+openapi: 3.0.0
+info:
+  title: Binar Management API
+  version: 1.0.0
+servers:
+  - description: "Local Server"
+    url: https://localhost
+paths:
+  /v1/cars:
+    get:
+      tags:
+        - cars
+      responses:
+        '200':
+          description: Payload Successfully Displays All Car Data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cars'
+  /v1/cars{id}:
+    get:
+      tags:
+        - cars
+      parameters:
+        - name: id
+          in: path
+          description: ID of cars to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Payload Successfully Displays All Car Data by ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cars'
+        '404':
+          description: Payload Car Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 404
+                  message:
+                    type: string
+                    example: "Car Not Found"
+  /v1/cars/create:
+    post:
+      tags:
+        - cars
+      requestBody:
+        description: Payload for Making a Post
+        required: true
+        content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CarsBody'
+      responses:
+        '201':
+          description: Payload Successfully Add Data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cars'
+  /v1/cars/update/{id}:
+    put:
+      tags:
+        - cars
+      parameters:
+        - name: id
+          in: path
+          description: ID of cars to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Payload for Change Data
+        required: true
+        content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CarsBody'
+      responses:
+        '201':
+          description: Payload Successfully Update Data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cars'
+  /v1/cars/delete/{id}:
+    delete:
+      tags:
+        - cars
+      parameters:
+        - name: id
+          in: path
+          description: ID of cars to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '201':
+          description: Payload Successfully Delete Car Data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 201
+                  message:
+                    type: string
+                    example: "Successfully delete car data"
+  /v1/users/register:
+    post:
+      tags:
+        - users
+      requestBody:
+        description: Payload for Register User
+        required: true
+        content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  username:
+                    type: string
+                    example: "Admin"
+                  email:
+                    type: string
+                    example: "admin@gmail.com"
+                  password:
+                    type: string
+                    example: "admin12345"
+      responses:
+        '201':
+          description: Payload Successfully Register User
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 201
+                  message:
+                    type: string
+                    example: "Successful Registration!"
+  /v1/users/login:
+    post:
+      tags:
+        - users
+      requestBody:
+        description: Payload for Login Request
+        required: true
+        content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  email:
+                    type: string
+                    example: "admin@gmail.com"
+                  password:
+                    type: string
+                    example: "admin12345"
+      responses:
+        '200':
+          description: Payload Successfully Log In
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: "Successfully Logged In!"
+                  token:
+                    type: string
+                    example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MDA4MDk5MzF9.Kvlz2Wbd4NE5lNvF154twhjeKGix7rS7lmbhquAQo1c"
+        '404':
+          description: Payload Failed Login for Email
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 404
+                  message:
+                    type: string
+                    example: "Email not found, please try another email!"
+        '401':
+          description: Payload Failed Login for Password
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 401
+                  message:
+                    type: string
+                    example: "Incorrect password, please try again!"
+  /v1/users/profile:
+    get:
+      tags:
+        - users
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Payload Successfully Show Profile
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 2
+                  username:
+                    type: string
+                    example: "Admin"
+                  email:
+                    type: string
+                    example: "admin@gmail.com"
+                  password:
+                    type: string
+                    example: "$2a$10$eFG.DPvL488JGbZ8eUW/5.xUvU1QhEeLHNd/pI/uV5j1axszS2zUu"
+                  # role:
+        '401':
+          description: Failed authorize for Incorrect Token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Unauthorize"
+  /v1/users/remove/{id}:
+    delete:
+      tags:
+        - users
+      parameters:
+        - name: id
+          in: path
+          description: ID of users to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '201':
+          description: Payload Successfully Delete User
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 201
+                  message:
+                    type: string
+                    example: "Successfully delete user!"
+components:
+  schemas:
+    CarsBody:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "Avanza"
+        type:
+          type: string
+          example: "MPV"
+        size:
+          type: string
+          example: "medium"
+        price:
+          type: integer
+          example: 500000
+        image_url:
+          type: string
+          example: "Car-Image.png"
+    Cars:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 3565948359413760
+        name:
+          type: string
+          example: "Avanza"
+        type:
+          type: string
+          example: "MPV"
+        size:
+          type: string
+          example: "medium"
+        price:
+          type: integer
+          example: 500000
+        image_url:
+          type: string
+          example: "/uploads/image_url-1700376686909-144224407.png"
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  

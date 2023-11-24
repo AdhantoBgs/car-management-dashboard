@@ -4,6 +4,12 @@
 
 ## API Docs
 
+`[ENDPOINT] /v1/api-docs`
+
+```url
+[GET] http://localhost:3000/v1/api-docs
+```
+
 ## Users Endpoint
 
 #### Super Admin Credentials:
@@ -36,11 +42,10 @@ password: admin-super
   "status": "201",
   "message": "Successful Registration!",
   "data": {
-    "id": 3,
-    "username": "",
-    "email": "",
-    "password": "",
-    "role": ""
+    "id": 2,
+    "username": "Admin",
+    "email": "admin@gmail.com",
+    "password": "admin12345"
   }
 }
 ```
@@ -70,7 +75,7 @@ password: admin-super
 {
   "status": 200,
   "message": "Successfully Logged In!",
-  "token": ""
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MDA4MDk5MzF9.Kvlz2Wbd4NE5lNvF154twhjeKGix7rS7lmbhquAQo1c"
 }
 ```
 
@@ -103,7 +108,7 @@ password: admin-super
 #### Request headers authorization
 
 ```text
-
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MDA4MDk5MzF9.Kvlz2Wbd4NE5lNvF154twhjeKGix7rS7lmbhquAQo1c
 ```
 
 #### Response body
@@ -111,10 +116,9 @@ password: admin-super
 ```json
 {
   "id": 3,
-  "username": "",
-  "email": "",
-  "password": "",
-  "role": ""
+  "username": "Admin",
+  "email": "admin@gmail.com",
+  "password": "$2a$10$eFG.DPvL488JGbZ8eUW/5.xUvU1QhEeLHNd/pI/uV5j1axszS2zUu"
 }
 ```
 

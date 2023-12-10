@@ -31,19 +31,19 @@ const CarResult = () => {
                 }) => {
                     return (
                         <Layout className="cars-result-container">
-                        <div key={id} className="cars-result-col">
-                            <Card className="cars-result-card">
-                                <p>{manufacture} / {type}</p>
-                                <h2>Rp {rentPerDay} / hari</h2>
-                                <p>{description}</p>
-                                <Flex vertical>
-                                    <Space><TeamOutlined />{capacity} orang</Space>
-                                    <Space><SettingOutlined />{transmission}</Space>
-                                    <Space><CalendarOutlined />Tahun {year}</Space>
-                                    <Button style={styBtn}>Pilih Mobil</Button>
-                                </Flex>
-                            </Card>
-                        </div>
+                            <div key={id} className="cars-result-col">
+                                <Card className="cars-result-card">
+                                    <p>{manufacture} / {type}</p>
+                                    <h2>Rp {rentPerDay} / hari</h2>
+                                    <p>{description}</p>
+                                    <Flex vertical>
+                                        <Space><TeamOutlined />{capacity} orang</Space>
+                                        <Space><SettingOutlined />{transmission}</Space>
+                                        <Space><CalendarOutlined />Tahun {year}</Space>
+                                        <Button style={styBtn}>Pilih Mobil</Button>
+                                    </Flex>
+                                </Card>
+                            </div>
                         </Layout>
                     )})}
         </div>

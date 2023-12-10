@@ -27,7 +27,7 @@ const CarResult = () => {
     return (
         <div>
             {data.map(({
-                id, manufacture, type, rentPerDay, description, capacity, transmission, year
+                id, manufacture, type, rentPerDay, capacity, transmission, year
                 }) => {
                     return (
                         <Layout className="cars-result-container">
@@ -35,7 +35,10 @@ const CarResult = () => {
                                 <Card className="cars-result-card">
                                     <p>{manufacture} / {type}</p>
                                     <h2>Rp {rentPerDay} / hari</h2>
-                                    <p>{description}</p>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                    </p>
                                     <Flex vertical>
                                         <Space><TeamOutlined />{capacity} orang</Space>
                                         <Space><SettingOutlined />{transmission}</Space>

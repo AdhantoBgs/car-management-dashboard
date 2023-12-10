@@ -500,18 +500,18 @@ a {
   display: flex;
   width: 75%;
   padding-top: unset;
-  flex-direction: column;
 }
 
 .cars-result-col {
-  display: inline-block;
+  display: flex;
   width: 33.3333%;
   padding: 0 1%;
+  flex-wrap: wrap;
 }
 
 .cars-result-card {
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: column;
   border: 1px solid #ddd;
   border-radius: 5px;
   padding: 1.5rem;

@@ -2,6 +2,7 @@ import { Button, Layout, Form, Input, Select, DatePicker, Row, Col } from "antd"
 import { ClockCircleOutlined, TeamOutlined } from "@ant-design/icons";
 import { styInputFilter, styLayoutForm, styBtn, marginTop } from "../../styles/Css";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 const Content = Layout;
 const Option = Select;
@@ -12,9 +13,21 @@ const FormFilter = () => {
     const [time, setTime] = useState("");
     const [capacity, setCapacity] = useState("");
 
-    
+    const dispatch = useDispatch();
 
-    const handleFilter = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleFilter = (e: React.FormEvent) => {
+        e.preventDefault();
+
+        let capacityVal = 0;
+
+        if (capacity !== "") {
+            capacityVal = parseInt(capacity);
+        };
+
+        const dateVal = new Date(`${date} ${time}`);
+
+        const driverVal = driver === "true";
+
         
     };
 

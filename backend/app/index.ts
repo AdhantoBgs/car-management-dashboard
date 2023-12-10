@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 
 const handle = require("../config/middleware/handle");
 const carRouter = require("../config/routes/carRoutes");
@@ -8,6 +9,7 @@ const database = require("../config/utils/database/database");
 const app = express();
 const PORT: number = 9000;
 
+app.use(cors());
 app.use(express.static("public"));
 app.use(express.urlencoded());
 app.use(handle);

@@ -483,3 +483,15 @@ a {
   width: 5.438rem;
   padding: .5rem .75rem;
 }
+
+.googleBtn {
+  border: 1px solid #0D28A6;
+  border-radius: 3px;
+  width: 100%;
+}
+
+.googleBtn img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

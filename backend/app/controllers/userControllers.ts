@@ -1,10 +1,25 @@
 import { Response, Request, NextFunction } from "express";
 import UsersService from "../services/users";
 import jwt, { JwtPayload } from "jsonwebtoken";
+import axios from "axios";
 
 const encryptPass = require("../../config/utils/tools/encryptPass");
 const checkPass = require("../../config/utils/tools/checkPass");
 const createToken = require("../../config/utils/tools/createToken");
+
+const googleOAuth = async (req: Request, res: Response) => {
+    const reqAuthHeaders = req.headers.authorization || "";
+    const options = { headers: { Authorization: reqAuthHeaders } };
+    const response = await axios.get(
+        "https://www.googleapis.com/oauth2/v2/userinfo",
+        options
+    );
+
+    return res.status(200).json({
+        status: 201,
+        message: response.data
+    });
+};
 
 const register = async (req: Request, res: Response) => {
     const username = req.body.username;
@@ -92,9 +107,10 @@ const remove = async (req: Request, res: Response) => {
 };
 
 module.exports = {
+    googleOAuth,
     register,
     login,
     profile,
     authorize,
-    remove
+    remove,
 };

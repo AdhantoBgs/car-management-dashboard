@@ -1,13 +1,13 @@
 import { Button, Layout, Form, Input, Space, Divider } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
-import { GoogleLogin } from "@react-oauth/google";
 import { useState } from "react";
+import LoginGoogle from "../GoogleLogin";
 
 const FormLogin = () => {
     const navigate = useNavigate();
 
-    const handleOnClick = (): void => {
+    const handleOnClick = () => {
         localStorage.setItem("token", "true");
         navigate("/admin");
     };
@@ -17,9 +17,6 @@ const FormLogin = () => {
 
     const handelSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-
-        console.log("email:", email);
-        console.log("password", password);
     };
 
     return (
@@ -55,14 +52,7 @@ const FormLogin = () => {
                 </Button>
             </form>
             <Divider orientation="center" style={{fontSize: "12px", color: "#d9d9d9"}}>Or</Divider>
-            {/* <GoogleLogin
-                onSuccess={(credentialResponse) => {
-                    console.log(credentialResponse);
-                }}
-                onError={() => {
-                    console.log('Login Failed');
-                }}
-            /> */}
+            <LoginGoogle />
             <a href="/" className="bck-home">
                 <Space>
                     <ArrowLeftOutlined />

@@ -2,12 +2,11 @@ import { Button, Layout, Form, Input, Space, Divider } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
 import LoginGoogle from "../GoogleLogin";
 
 const FormLogin = () => {
     const navigate = useNavigate();
-
-    
 
     const handleOnClick = () => {
         localStorage.setItem("token", "true");
@@ -17,7 +16,7 @@ const FormLogin = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handelSubmit = (e: React.FormEvent) => {
+    const handelSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
     };
 

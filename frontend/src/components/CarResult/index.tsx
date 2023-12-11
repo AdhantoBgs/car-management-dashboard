@@ -15,7 +15,7 @@ const CarResult = () => {
             if (data) {
                 axios.get(API)
                     .then((res) => {
-                        setData(res.data)
+                        setData(res.data);
                     })
                     .catch(error => {
                         console.log(error);

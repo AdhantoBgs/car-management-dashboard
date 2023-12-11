@@ -1,4 +1,5 @@
 import { Layout, Flex, Button, Space, Card } from "antd";
+import { TeamOutlined, SettingOutlined, CalendarOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ModalBtn from "../Modal";
@@ -20,13 +21,19 @@ const CardDasboard = () => {
     return (
         <Layout>
             {data.map(({
-                id, name, type, size, price, image_url
+                id, name, type, capacity, transmission, year, price, image_url, description
             }) => {
                 return (
                     <Card className="list-col list-car-card">
                         <img src={image_url} />
                         <p>{name} / {type}</p>
                         <h3>Rp {price} / hari</h3>
+                        <p>{description}</p>
+                        <Flex vertical>
+                            <Space><TeamOutlined />{capacity} orang</Space>
+                            <Space><SettingOutlined />{transmission}</Space>
+                            <Space><CalendarOutlined />Tahun {year}</Space>
+                        </Flex>
                         <ModalBtn />
                     </Card>
                 )

@@ -14,22 +14,37 @@ export default class CarsRepository {
         const id = param.id;
         const name = param.name;
         const type = param.type;
-        const size = param.size;
+        const capacity = param.capacity;
+        const transmission = param.transmission;
+        const year = param.year;
         const price = param.price;
+        const availableat = param.availableat;
+        const drivertype = param.drivertype;
         const image_url = param.image_url;
+        const description = param.description;
 
-        return await CarsModel.query().insert({id, name, type, size, price, image_url}).returning("*");
+        return await CarsModel.query()
+            .insert({id, name, type, capacity, transmission, year, price, availableat, drivertype, image_url, description})
+            .returning("*");
     }
 
     async updateCars(param: Item) {
         const id = param.id;
         const name = param.name;
         const type = param.type;
-        const size = param.size;
+        const capacity = param.capacity;
+        const transmission = param.transmission;
+        const year = param.year;
         const price = param.price;
+        const availableat = param.availableat;
+        const drivertype = param.drivertype;
         const image_url = param.image_url;
+        const description = param.description;
 
-        return await CarsModel.query().update({name, type, size, price, image_url}).where("id", id).returning("*");
+        return await CarsModel.query()
+            .update({id, name, type, capacity, transmission, year, price, availableat, drivertype, image_url, description})
+            .where("id", id)
+            .returning("*");
     }
 
     async deleteData(id: number) {

@@ -22,15 +22,22 @@ const postCars = async (req: Request, res: Response) => {
     const id = uuid;
     const name = reqBody?.name;
     const type = reqBody?.type;
-    const size = reqBody?.size;
+    const capacity = reqBody?.capacity;
+    const transmission = reqBody?.transmission;
+    const year = reqBody?.year;
     const price = reqBody?.price;
+    const availableat = reqBody?.availableat;
+    const drivertype = reqBody?.drivertype;
     let image_url = reqBody?.image_url;
+    const description = reqBody?.description;
 
     if(req.file) {
         const url = `/uploads/${req.file.filename}`;
         image_url = url;
 
-        const postNew = await new CarsService().postNewCar({id, name, type, size, price, image_url});
+        const postNew = await new CarsService().postNewCar({
+            id, name, type, capacity, transmission, year, price, availableat, drivertype, image_url, description
+        });
 
         res.status(201).json(postNew);
     }
@@ -41,15 +48,22 @@ const putCars = async (req: Request, res: Response) => {
     const id = Number(req.params.id);
     const name = reqBody?.name;
     const type = reqBody?.type;
-    const size = reqBody?.size;
+    const capacity = reqBody?.capacity;
+    const transmission = reqBody?.transmission;
+    const year = reqBody?.year;
     const price = reqBody?.price;
+    const availableat = reqBody?.availableat;
+    const drivertype = reqBody?.drivertype;
     let image_url = reqBody?.image_url;
+    const description = reqBody?.description;
 
     if(req.file) {
         const url = `/uploads/${req.file.filename}`;
         image_url = url;
 
-        const updateData = await new CarsService().updateCars({id, name, type, size, price, image_url})
+        const updateData = await new CarsService().updateCars({
+            id, name, type, capacity, transmission, year, price, availableat, drivertype, image_url, description
+        });
 
         res.status(201).json(updateData);
     }

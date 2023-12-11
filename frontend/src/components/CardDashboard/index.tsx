@@ -6,17 +6,14 @@ import ModalBtn from "../Modal";
 const CardDasboard = () => {
     const [data, setData] = useState([]);
 
-    useEffect(
-        () => {
-            if (data) {
-                axios.get("http://localhost:9000/v1/cars")
-                    .then((res) => {
-                        setData(res.data);
-                    })
-                    .catch(error => {
-                        console.log(error);
-                    })
-            }
+    useEffect(() => {
+        axios.get("http://localhost:9000/v1/cars")
+            .then((response) => {
+                setData(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            })  
         }, []
     );
 

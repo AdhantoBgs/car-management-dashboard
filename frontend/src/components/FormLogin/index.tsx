@@ -6,18 +6,18 @@ import axios from "axios";
 import LoginGoogle from "../GoogleLogin";
 
 const FormLogin = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
     const navigate = useNavigate();
+
+    const handelSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+    };
 
     const handleOnClick = () => {
         localStorage.setItem("token", "true");
         navigate("/admin");
-    };
-
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-
-    const handelSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
     };
 
     return (

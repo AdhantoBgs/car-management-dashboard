@@ -253,10 +253,13 @@ a {
   margin-bottom: 1rem;
 }
 
-.ant-form-item .ant-form-item-label>label,
-.ant-select-dropdown .ant-select-item {
+.ant-form-item .ant-form-item-label>label {
   font-size: 12px;
   width: 12rem;
+}
+
+.ant-select-dropdown .ant-select-item {
+  font-size: 12px;
 }
 
 .ant-select-single .ant-select-selector,

@@ -1,4 +1,4 @@
-import { Layout, Button, Form, Input, Radio, DatePicker } from "antd";
+import { Layout, Button, Form, Input, Radio, DatePicker, Row, Col } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -97,7 +97,7 @@ const FormCars = () => {
                         label="Tipe Driver"
                         rules={[{required: true, message: "Please fill the form"}]}
                     >
-                         <Radio.Group>
+                        <Radio.Group>
                             <Radio value="driver">Driver</Radio>
                             <Radio value="non-driver">Non-driver</Radio>
                         </Radio.Group>

@@ -499,12 +499,6 @@ a {
   align-items: center;
 }
 
-.cars-result-container {
-  display: flex;
-  width: 75%;
-  padding-top: unset;
-}
-
 .cars-result-col {
   display: flex;
   width: 33.3333%;

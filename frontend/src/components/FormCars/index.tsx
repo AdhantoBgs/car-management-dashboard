@@ -1,40 +1,38 @@
-import { Layout, Button, Form, Input, Select } from "antd";
+import { Layout, Button, Form, Input, Radio, DatePicker } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { styFormAdd, styBtnCnl, styBtnSave } from "../../styles/Css";
 
 const { Content} = Layout;
-const { Option } = Select;
+const { TextArea } = Input;
 
 const FormCars = () => {
-    const [name, setName] = useState("");
-    const [type, setType] = useState("");
-    const [size, setSize] = useState("");
-    const [price, setPrice] = useState("");
-    const [image_url, setImage_url] = useState("");
     const [posts, setPosts] = useState([]);
 
     const navigate = useNavigate();
 
-    const handelSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-    };
+    const onFinish = (values: any) => {
+        const addForm = new FormData();
+        
+        addForm.append("name", values.name);
+        addForm.append("type", values.type);
+        addForm.append("capacity", values.capacity);
+        addForm.append("transmission", values.transmission);
+        addForm.append("year", values.year);
+        addForm.append("price", values.price);
+        addForm.append("availableat", values.availableat);
+        addForm.append("drivertype", values.drivertype);
+        addForm.append("image_url", values.image_url);
+        addForm.append("description", values.description);
 
-    const addData = () => {
-        axios.post("http://localhost:9000/v1/cars/create", {
-            name: name,
-            type: type,
-            size: size,
-            price: price,
-            image_url: image_url,
-        })
-        .then((response) => {
-            setPosts(response.data);
-        })
-        .catch(error => {
-            console.log(error);
-        });
+        axios.post("http://localhost:9000/v1/cars/create", addForm)
+            .then((response) => {
+                console.log(response);
+            })
+            .catch(error => {
+                console.log(error);
+            });
     };
 
     const handleCancel = () => {
@@ -42,49 +40,87 @@ const FormCars = () => {
     };
 
     return (
-        <form onSubmit={handelSubmit}>
+        <Form name="cars" initialValues={{remember: true}} autoComplete="off" onFinish={onFinish}>
             <Content className="form-container">
                 <Layout style={styFormAdd}>
-                    <Form.Item label="Nama">
-                        <Input 
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            placeholder="Avanza" 
-                        />
+                    <Form.Item 
+                        name="name" 
+                        label="Nama"
+                        rules={[{required: true, message: "Please fill the form"}]}
+                    >
+                        <Input placeholder="Avanza" />
                     </Form.Item>
-                    <Form.Item label="Tipe">
-                        <Input 
-                            value={type}
-                            onChange={(e) => setType(e.target.value)}
-                            placeholder="MPV" 
-                        />
+                    <Form.Item 
+                        name="type" 
+                        label="Tipe"
+                        rules={[{required: true, message: "Please fill the form"}]}
+                    >
+                        <Input placeholder="MPV" />
                     </Form.Item>
-                    <Form.Item label="Kapasitas">
-                        <Input 
-                            value={size}
-                            onChange={(e) => setSize(e.target.value)}
-                            placeholder="5"
-                        />
+                    <Form.Item 
+                        name="capacity" 
+                        label="Kapasitas"
+                        rules={[{required: true, message: "Please fill the form"}]}
+                    >
+                        <Input placeholder="5" />
                     </Form.Item>
-                    <Form.Item label="Harga">
-                        <Input 
-                            value={price}
-                            onChange={(e) => setPrice(e.target.value)}
-                            placeholder="Rp. ,-" 
-                        />
+                    <Form.Item 
+                        name="transmission" 
+                        label="Transmisi"
+                        rules={[{required: true, message: "Please fill the form"}]}
+                    >
+                        <Input placeholder="Manual" />
                     </Form.Item>
-                    <Form.Item label="Foto">
-                        <Input 
-                            value={image_url}
-                            onChange={(e) => setImage_url(e.target.value)}
-                            type="file"
-                        />
+                    <Form.Item 
+                        name="year" 
+                        label="Tahun"
+                        rules={[{required: true, message: "Please fill the form"}]}
+                    >
+                        <Input placeholder="2019" />
+                    </Form.Item>
+                    <Form.Item 
+                        name="price" 
+                        label="Harga"
+                        rules={[{required: true, message: "Please fill the form"}]}
+                    >
+                        <Input placeholder="Rp. ,-" />
+                    </Form.Item>
+                    <Form.Item 
+                        name="availableat" 
+                        label="Tersedia"
+                        rules={[{required: true, message: "Please fill the form"}]}
+                    >
+                        <DatePicker showTime />
+                    </Form.Item>
+                    <Form.Item 
+                        name="drivertype" 
+                        label="Tipe Driver"
+                        rules={[{required: true, message: "Please fill the form"}]}
+                    >
+                         <Radio.Group>
+                            <Radio value="driver">Driver</Radio>
+                            <Radio value="non-driver">Non-driver</Radio>
+                        </Radio.Group>
+                    </Form.Item>
+                    <Form.Item 
+                        name="image_url" 
+                        label="Foto"
+                        rules={[{required: true, message: "Please fill the form"}]}
+                    >
+                        <Input type="file" />
+                    </Form.Item>
+                    <Form.Item 
+                        name="description" 
+                        label="Deskripsi"
+                        rules={[{required: true, message: "Please fill the form"}]}
+                    >
+                        <TextArea rows={4} placeholder="Deskripsi mobil" />
                     </Form.Item>
                 </Layout>
             </Content>
             <Button style={styBtnCnl} onClick={handleCancel}>Cancel</Button>
-            <Button style={styBtnSave} htmlType="submit" onClick={addData}>Save</Button>
-        </form>
+            <Button style={styBtnSave} htmlType="submit">Save</Button>
+        </Form>
     );
 };
 

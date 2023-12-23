@@ -8,7 +8,7 @@ password: admin12345
 ### Frontend Side
 
 ```url
-http://localhost:3000
+https://dhan-rental.netlify.app/
 ```
 
 ### Backend Side

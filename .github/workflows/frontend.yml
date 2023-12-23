@@ -1,0 +1,31 @@
+name: Netlify Frontend Deployment
+on:
+  push:
+    branches:
+      - "**"
+jobs:
+  deploy:
+    name: deploy frontend using netlify
+    runs-on: ubuntu-lates
+    defaults:
+      run:
+        working-directory: "./frontend"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+          cache: "npm"
+          cache-dependencies: package-lock.json
+      - name: npm install
+        run: npm install
+      - name: npm build
+        run: npm build
+      - name: deployment wit netlify
+        uses: South-Paw/action-netlify-deploy@v1.2.0
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          netlify-auth-token: ${{secrets.NETLIFY_AUTH_TOKEN}}
+          netlify-site-id: ${{secrets.NETLIFY_SITE_ID}}
+          build-dir: "./build"
+          comment-on-commit: true

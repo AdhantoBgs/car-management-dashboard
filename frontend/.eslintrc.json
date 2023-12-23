@@ -23,7 +23,9 @@
             "error",
             "tab"
         ],
-        "linebreak-style": "off",
+        "linebreak-style": [
+            "off"
+        ],
         "quotes": [
             "error",
             "double"

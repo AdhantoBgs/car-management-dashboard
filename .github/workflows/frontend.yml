@@ -18,7 +18,7 @@ jobs:
       - name: npm install
         run: npm install -f
       - name: npm build
-        run: npm run build
+        run: npm run build -f
       - name: deployment with netlify
         uses: South-Paw/action-netlify-deploy@v1.2.0
         with:

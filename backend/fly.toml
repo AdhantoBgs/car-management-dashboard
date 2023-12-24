@@ -9,7 +9,7 @@ primary_region = "sin"
 [build]
 
 [http_service]
-  internal_port = 3000
+  internal_port = 9000
   force_https = true
   auto_stop_machines = true
   auto_start_machines = true
@@ -20,3 +20,14 @@ primary_region = "sin"
   cpu_kind = "shared"
   cpus = 1
   memory_mb = 1024
+
+[[services]]
+  internal_port = 5432 # Postgres instance
+  protocol = "tcp"
+
+[[services.ports]]
+  handlers = ["pg_tls"]
+  port = 5432
+
+[env]
+  DATABASE_URL = "postgres://backend_binar_car_app:RnCLQo1rOLBtjI7@backend-carrental-db.flycast:5432/backend_binar_car_app"

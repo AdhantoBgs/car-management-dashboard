@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "test": "jest --config ./jest.config.ts",
-    "start": "nodemon ./app/index.ts",
+    "start": "node ./app/index.ts",
     "eslint": "eslint .",
     "deploy": "fly deploy"
   },

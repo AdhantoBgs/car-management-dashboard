@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest --config ./jest.config.ts",
     "start": "nodemon ./app/index.ts",
-    "eslint": "eslint ."
+    "eslint": "eslint .",
+    "deploy": "fly deploy"
   },
   "author": "",
   "license": "ISC",
@@ -27,6 +28,7 @@
     "uuid-int": "^3.1.0"
   },
   "devDependencies": {
+    "@flydotio/dockerfile": "^0.5.0",
     "@types/bcryptjs": "^2.4.6",
     "@types/express": "^4.17.21",
     "@types/jest": "^29.5.11",

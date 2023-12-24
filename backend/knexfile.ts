@@ -7,8 +7,8 @@ const config: { [key: string]: Knex.Config } = {
 	development: {
 		client: "postgresql",
 		connection: {
-			database: "binar_car_rental",
-			user: "user01",
+			database: "backend_car_rental_app",
+			user: "admin",
 			password: "admin01"
 			// filename: "./dev.sqlite3"
 		}
